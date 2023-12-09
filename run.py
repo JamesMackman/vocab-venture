@@ -56,13 +56,14 @@ def initialize_game():
             print("Error: No words loaded. Exiting game.")
             return None, None, None
 
-        # Prompt user to choose a difficulty level
-        difficulty_levels = set(word_info['difficulty'] for word_info in word_list)
+        # Extract difficulty levels and print them in the desired order
+        difficulty_levels = ['Easy', 'Medium', 'Hard']
         print("Available difficulty levels:", difficulty_levels)
-        chosen_difficulty = input("Choose a difficulty level: ").lower()
+        
+        chosen_difficulty = input("Choose a difficulty level: ").capitalize()  # Convert first letter to uppercase for consistent comparison
 
         # Convert difficulty levels to lowercase for consistent comparison
-        filtered_words = [word_info for word_info in word_list if word_info['difficulty'].lower() == chosen_difficulty]
+        filtered_words = [word_info for word_info in word_list if word_info['difficulty'].lower() == chosen_difficulty.lower()]
 
         if not filtered_words:
             print(f"No words available for difficulty level: {chosen_difficulty}. Exiting game.")
