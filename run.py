@@ -3,6 +3,9 @@ from google.oauth2.service_account import Credentials
 import random
 
 def load_words(file_path='creds.json', sheet_name='vocab_venture'):
+    """
+    Load words, hints, and difficulty levels from a Google Spreadsheet
+    """
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.file",
@@ -42,6 +45,9 @@ def load_words(file_path='creds.json', sheet_name='vocab_venture'):
         return []
 
 def initialize_game():
+    """
+    Initialize a word guessing game by prompting the user to choose a difficulty level.
+    """
     try:
         # Load words from the spreadsheet
         word_list = load_words()
