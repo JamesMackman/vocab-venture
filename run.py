@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 
-
 def load_words(file_path='creds.json', sheet_name='vocab_venture'):
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -42,5 +41,41 @@ def load_words(file_path='creds.json', sheet_name='vocab_venture'):
         print(f"An error occurred while loading words: {e}")
         return []
 
-word_list = load_words()
-print(word_list)
+def initialize_game():
+    try:
+        # Load words from the spreadsheet
+        word_list = load_words()
+
+        if not word_list:
+            print("Error: No words loaded. Exiting game.")
+            return None, None, None
+
+        # Prompt user to choose a difficulty level
+        difficulty_levels = set(word_info['difficulty'] for word_info in word_list)
+        print("Available difficulty levels:", difficulty_levels)
+        chosen_difficulty = input("Choose a difficulty level: ").lower()
+
+        # Convert difficulty levels to lowercase for consistent comparison
+        filtered_words = [word_info for word_info in word_list if word_info['difficulty'].lower() == chosen_difficulty]
+
+        if not filtered_words:
+            print(f"No words available for difficulty level: {chosen_difficulty}. Exiting game.")
+            return None, None, None
+
+        # Choose a random word from the filtered list
+        chosen_word_info = random.choice(filtered_words)
+        return chosen_word_info['word'], chosen_word_info['hint'], chosen_difficulty
+
+    except Exception as e:
+        print(f"An error occurred during game initialization: {e}")
+        return None, None, None
+
+# Example usage
+chosen_word, hint, difficulty = initialize_game()
+
+if chosen_word is not None:
+    print(f"Chosen word: {chosen_word}")
+    print(f"Hint: {hint}")
+    print(f"Difficulty: {difficulty}")
+else:
+    print("Game initialization failed.")
