@@ -103,7 +103,6 @@ def play_game(chosen_word, hint, difficulty):
 chosen_word, hint, difficulty = initialize_game()
 
 if chosen_word is not None:
-    print(f"Chosen word: {chosen_word}")
     print(f"Hint: {hint}")
     print(f"Difficulty: {difficulty}")
 
