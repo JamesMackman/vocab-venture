@@ -34,7 +34,7 @@ def load_words(file_path='creds.json', sheet_name='vocab_venture'):
 
         # Combine words, hints, and difficulty levels into a list of dictionaries
         word_info_list = [
-            {'word': word, 'hint': hint, 'difficulty': difficulty}
+            {'word' : word, 'hint': hint, 'difficulty': difficulty}
             for word, hint, difficulty in zip(words, hints, difficulty_levels)
         ]
 
@@ -76,6 +76,29 @@ def initialize_game():
         print(f"An error occurred during game initialization: {e}")
         return None, None, None
 
+def play_game(chosen_word, hint, difficulty):
+    """
+    Play the word guessing game, allowing the user 3 attempts to guess the word.
+    """
+    attempts = 3
+
+    print("\nLet's start the game!")
+    print(f"Hint: {hint}")
+
+    while attempts > 0:
+        guess = input("Enter your guess: ").lower()
+
+        if guess == chosen_word.lower():
+            print("Congratulations! You guessed the word correctly.")
+            break
+        else:
+            attempts -= 1
+            if attempts > 0:
+                print(f"Incorrect! You have {attempts} attempts remaining. Try again.")
+            else:
+                print(f"Sorry, you've run out of attempts. The correct word was '{chosen_word}'.")
+                break
+
 # Example usage
 chosen_word, hint, difficulty = initialize_game()
 
@@ -83,5 +106,8 @@ if chosen_word is not None:
     print(f"Chosen word: {chosen_word}")
     print(f"Hint: {hint}")
     print(f"Difficulty: {difficulty}")
+
+    # Play the game
+    play_game(chosen_word, hint, difficulty)
 else:
     print("Game initialization failed.")
