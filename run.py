@@ -73,67 +73,62 @@ def initialize_game():
             print("Error: No words loaded. Exiting game.")
             return None, None, None
 
-        # Extract difficulty levels and print them in the desired order
-        difficulty_levels = ['Easy', 'Medium', 'Hard']
-        print("Available difficulty levels:", difficulty_levels)
-        
-        chosen_difficulty = input("Choose a difficulty level: ").capitalize().strip()
-
-        # Convert difficulty levels to lowercase for consistent comparison
-        filtered_words = [word_info for word_info in word_list if word_info['difficulty'].lower() == chosen_difficulty.lower()]
-
-        if not filtered_words:
-            print(f"No words available for difficulty level: {chosen_difficulty}. Exiting game.")
-            return None, None, None
-
-        # Choose a random word from the filtered list
-        chosen_word_info = random.choice(filtered_words)
+        # Choose a random word from the list
+        chosen_word_info = random.choice(word_list)
 
         # Choose the initial hint from 'Hint 1'
         chosen_hint = chosen_word_info['hints']
 
-        return chosen_word_info['word'], chosen_hint, difficulty_levels
+        return chosen_word_info['word'], chosen_hint
 
     except KeyboardInterrupt:
         print("\nGame interrupted by user.")
-        return None, None, None
+        return None, None
     except Exception as e:
         print(f"An error occurred during game initialization: {e}")
-        return None, None, None
+        return None, None
 
-def play_game(chosen_word, hints, difficulty):
+def play_game(chosen_word, hints):
+    current_level = 1
     attempts = 3
-    current_hint_index = 1  # Start with the first hint
 
     print("\nLet's start the game!")
 
-    while attempts > 0:
+    while current_level <= 5:
         # Print the current hint
-        current_hint_key = f'hint_{current_hint_index}'
-        print(f"Hint {current_hint_index}: {hints[current_hint_key]}")
+        current_hint_key = f'hint_{current_level}'
+        print(f"Level {current_level} Hint: {hints[current_hint_key]}")
 
         guess = input("Enter your guess: ").lower()
 
         if guess == chosen_word.lower():
-            print("Congratulations! You guessed the word correctly.")
-            break
+            print(f"Congratulations! You guessed the word correctly and completed Level {current_level}.")
+            current_level += 1
+
+            if current_level <= 5:
+                # Move to the next level
+                print(f"Proceeding to Level {current_level}.")
+            else:
+                print("You've reached Level 5! You win the game.")
+                break
         else:
             attempts -= 1
-            current_hint_index += 1
 
-            if current_hint_index <= 3:
-                print(f"Incorrect! Here's your next hint.")
+            if attempts > 0:
+                print(f"Incorrect! You have {attempts} attempts left for this level.")
             else:
                 print(f"Sorry, you've run out of attempts. The correct word was '{chosen_word}'.")
-                break
+                print("Resetting to Level 1.")
+                current_level = 1
+                attempts = 3
 
 # Example usage
-chosen_word, hints, difficulty = initialize_game()
+chosen_word, hints = initialize_game()
 
 if chosen_word is not None:
-    print(f"Difficulty: {difficulty}")
+    print("Starting at Level 1")
 
     # Play the game
-    play_game(chosen_word, hints, difficulty)
+    play_game(chosen_word, hints)
 else:
     print("Game initialization failed.")
