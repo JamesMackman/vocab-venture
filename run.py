@@ -88,13 +88,24 @@ def initialize_game():
             for hint_key, hint_value in chosen_hints.items():
                 print(f"{hint_key}: {hint_value}")
 
-            guess = input("Enter your guess: ").lower()
+            attempts = 3
+            correct_guess = False
 
-            if guess == chosen_word_info['word'].lower():
-                print(f"Congratulations! You guessed the word correctly and completed Level {current_level}.")
-                current_level += 1
-            else:
-                print(f"Sorry, incorrect. The correct word was '{chosen_word_info['word']}'. Try again in Level {current_level}.")
+            while attempts > 0:
+                guess = input("Enter your guess: ").lower()
+
+                if guess == chosen_word_info['word'].lower():
+                    print(f"Congratulations! You guessed the word correctly and completed Level {current_level}.")
+                    correct_guess = True
+                    break
+                else:
+                    attempts -= 1
+                    print(f"Sorry, incorrect. You have {attempts} attempts left for Level {current_level}.")
+
+            if not correct_guess:
+                print(f"You've run out of attempts for Level {current_level}. The correct word was '{chosen_word_info['word']}'.")
+                print("Resetting to Level 1.")
+                current_level = 1
 
         print("You've reached Level 5! You win the game.")
 
@@ -107,6 +118,8 @@ def initialize_game():
 
 # Example usage
 initialize_game()
+
+
 
 
 
