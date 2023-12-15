@@ -4,7 +4,7 @@ import random
 
 # Constants
 WORKSHEET_NAME = 'words'
-SPREADSHEET_NAME = 'vocab_venture'  # Update to the name of your external spreadsheet
+SPREADSHEET_NAME = 'vocab_venture'
 
 def load_words(file_path='creds.json'):
     """
@@ -62,6 +62,10 @@ def load_words(file_path='creds.json'):
         return []
 
 def initialize_game():
+    """
+    Initializes and plays the Vocab Venture Game.
+    """
+
     try:
         print("Welcome to the Vocab Venture Game!")
         print("Can you guess the words and complete all levels? Let's find out!")
@@ -121,6 +125,7 @@ def initialize_game():
 
 # Example usage
 initialize_game()
+
 
 
 
