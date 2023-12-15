@@ -80,6 +80,9 @@ def initialize_game():
             # Choose a random word for the current level
             chosen_word_info = random.choice(word_list)
 
+            # Remove the chosen word from the word_list
+            word_list.remove(chosen_word_info)
+
             # Choose the hints for the chosen word
             chosen_hints = chosen_word_info['hints']
 
@@ -126,6 +129,7 @@ def initialize_game():
 
 # Example usage
 initialize_game()
+
 
 
 
