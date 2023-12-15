@@ -84,9 +84,7 @@ def initialize_game():
             chosen_hints = chosen_word_info['hints']
 
             print(f"\nLet's start Level {current_level}!")
-            print("Hints:")
-            for hint_key, hint_value in chosen_hints.items():
-                print(f"{hint_key}: {hint_value}")
+            print("Hint 1:", chosen_hints['Hint 1'])
 
             attempts = 3
             correct_guess = False
@@ -101,6 +99,11 @@ def initialize_game():
                 else:
                     attempts -= 1
                     print(f"Sorry, incorrect. You have {attempts} attempts left for Level {current_level}.")
+
+                    if attempts > 0:
+                        # Display the next hint
+                        next_hint = f"Hint {4 - attempts}: {chosen_hints[f'Hint {4 - attempts}']}"
+                        print(next_hint)
 
             if not correct_guess:
                 print(f"You've run out of attempts for Level {current_level}. The correct word was '{chosen_word_info['word']}'.")
@@ -118,6 +121,7 @@ def initialize_game():
 
 # Example usage
 initialize_game()
+
 
 
 
