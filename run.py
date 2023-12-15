@@ -63,6 +63,9 @@ def load_words(file_path='creds.json'):
 
 def initialize_game():
     try:
+        print("Welcome to the Vocab Venture Game!")
+        print("Can you guess the words and complete all levels? Let's find out!")
+
         # Set the initial level to 1
         current_level = 1
 
