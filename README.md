@@ -5,19 +5,46 @@ The Vocab Venture Game is an engaging and educational project designed to enhanc
 
 **Target Audience:**
 The game is intended for a diverse audience, including language learners, students preparing for exams, and individuals seeking an entertaining way to boost their word comprehension. Whether you're a student looking to improve your vocabulary for academic success or a language enthusiast wanting to explore new words, the Vocab Venture Game offers a dynamic and accessible learning environment suitable for various skill levels.
+
 ## Features 
 
 You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
 In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
-## Codeanywhere Reminders
 ### Existing Features
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+#### Welcome Message 
 
-`python3 -m http.server`
+- Provides a friendly welcome message to the user, setting a positive tone for the game and creating an inviting atmosphere for a delightful gaming experience.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+#### Inital Level Setting
+
+- Sets the initial game level to 1, ensuring a logical start for the user and allowing a seamless progression through increasing levels of difficulty.
+
+#### Game Loop
+
+- Runs a loop for each level, allowing the user to guess words and progress through levels, ensuring a dynamic and engaging gameplay experience.
+
+#### Random Word Selection
+
+- Randomly selects a word from the list for each level, adding variety and unpredictability, keeping the game exciting and different in each playthrough.
+
+#### Hints Display
+
+- Displays hints progressively, making it easier for the user to guess the word, providing valuable assistance and guidance throughout the challenging levels.
+
+#### Attempts Limit
+
+- Limits the number of attempts for each level, adding a challenge to the game and encouraging strategic thinking and careful consideration of each guess.
+
+#### Level Completion 
+
+- Informs the user when they complete a level and congratulates them upon completing all levels, offering a sense of accomplishment and recognition for their progress.
+
+#### Resetting 
+
+- If the user fails to guess the word within the attempts limit, resets the game to Level 1, allowing users to restart and continue enjoying the game without unnecessary frustration.
+
 ### Features Left to Implement
 
 To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
