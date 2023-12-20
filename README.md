@@ -45,10 +45,21 @@ In this section, you should go over the different parts of your project, and des
 
 - If the user fails to guess the word within the attempts limit, resets the game to Level 1, allowing users to restart and continue enjoying the game without unnecessary frustration.
 
-### Features Left to Implement
+### Future Features
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-- Another feature idea
+- **Multiplayer Mode**
+
+A mode that allows users to compete or collaborate with friends or other players. In this mode, users could take turns guessing words or compete in real-time to see who can progress through the levels more quickly. Additionally, a collaborative mode could involve players working together to solve word challenges. This feature adds a social and competitive element to the game, making it more engaging for users who enjoy interactive and shared gaming experiences. It could also include leaderboards to track and display the progress and achievements of individual players or groups, fostering friendly competition and a sense of community.
+
+- **Leaderboard**
+
+The Leaderboard feature enhances the Vocab Venture Game by introducing a dynamic and competitive element, allowing users to track and compare their progress with others. Users can access a real-time leaderboard that showcases the top performers, highlighting their achievements and levels completed. Each player's position on the leaderboard is determined by factors such as the number of levels completed, accuracy in guessing words, and the speed at which they progress.
+
+- **Difficulty Preferences**
+
+Users can choose their preferred difficulty level before starting the game. This caters to players with varying levels of vocabulary proficiency, ensuring an engaging experience for both beginners and advanced users. Difficulty settings can include options for adjusting word complexity, the number of attempts per level, or the intricacy of hints provided.
+
+
 
 `http_server`
 ## Testing 
