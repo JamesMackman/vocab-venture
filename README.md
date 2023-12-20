@@ -8,9 +8,6 @@ The game is intended for a diverse audience, including language learners, studen
 
 ## Features 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
-In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
 ### Existing Features
 
 #### Welcome Message 
@@ -59,46 +56,61 @@ The Leaderboard feature enhances the Vocab Venture Game by introducing a dynamic
 
 Users can choose their preferred difficulty level before starting the game. This caters to players with varying levels of vocabulary proficiency, ensuring an engaging experience for both beginners and advanced users. Difficulty settings can include options for adjusting word complexity, the number of attempts per level, or the intricacy of hints provided.
 
+## Data Model Overview
+
+### Entities
+
+1. **Word:**
+   - **Attributes:**
+     - `word`: The actual word that the user needs to guess.
+     - `hints`: A collection of hints associated with the word.
+
+2. **Hint:**
+   - **Attributes:**
+     - `hint_1`, `hint_2`, `hint_3`: Individual hints corresponding to different levels of difficulty.
+     - `difficulty_level`: The difficulty level associated with the hint.
+
+### Relationships
+
+- **Word-Hint Relationship:**
+  - Each word entity is associated with a set of hints (`hint_1`, `hint_2`, `hint_3`) stored in the hints entity.
+
+### Data Flow
+
+1. **Initialization:**
+   - On game initialization, data is loaded from the external Google Spreadsheet.
+   - The data includes words, hints, and difficulty levels.
+
+2. **Word Selection:**
+   - For each level, a random word is selected based on the associated difficulty level.
+   - The chosen word and its hints are then presented to the user.
+
+3. **Game Progression:**
+   - As the user progresses through levels, new words with corresponding hints are randomly selected based on the difficulty level of the current game level.
+
+4. **Hints Display:**
+   - Hints are displayed progressively, aiding the user in guessing the word.
+
+5. **Level Completion:**
+   - The user is informed and congratulated upon completing a level.
+   - If the user completes all levels, a final victory message is displayed.
+
+6. **Resetting:**
+   - If the user fails to guess the word within the attempts limit, the game resets to Level 1.
+
+### External Data Source
+
+- **Google Spreadsheet:**
+  - The external spreadsheet contains columns for words, `hint_1`, `hint_2`, `hint_3`, and `difficulty_level`.
+  - Words and associated information are fetched from this spreadsheet.
+
+### User Interaction
+
+- **User Input:**
+  - Users input their guesses during the game.
+  - Inputs are validated against the correct word for each level.
 
 
-`http_server`
-## Testing 
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-To log into the Heroku toolbelt CLI:
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-### Validator Testing 
-
----
-- HTML
-    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-maths%2F)
-- CSS
-    - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-maths%252F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-- JavaScript
-    - No errors were found when passing through the official [Jshint validator](https://jshint.com/)
-      - The following metrics were returned: 
-      - There are 11 functions in this file.
-      - Function with the largest signature takes 2 arguments, while the median is 0.
-      - Largest function has 10 statements in it, while the median is 3.
-      - The most complex function has a cyclomatic complexity value of 4 while the median is 2.
-
-Happy coding!
 ### Unfixed Bugs
 
 You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
