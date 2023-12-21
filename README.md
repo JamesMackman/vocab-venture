@@ -135,6 +135,16 @@ This data model ensures the effective management and utilization of information 
    - **Cause:** Memory leaks, infinite loops, or other issues leading to program instability.
    - **Solution:** I conducted a thorough code review, looking for potential memory leaks, infinite loops, or other performance issues. I implemented appropriate error handling to prevent crashes and improve overall stability.
 
+### Remaining bugs
+
+The project has undergone thorough testing and debugging, resulting in a stable and bug-free application. Rigorous efforts have been dedicated to identifying and resolving potential issues, ensuring a seamless user experience. I have conducted testing scenarios, addressing any bugs or glitches that might have been present in earlier stages. Continuous testing practices have contributed to the project's reliability. Users can engage with the application confidently, experiencing a smooth and error-free gameplay environment.
+
+### Validator Testing
+
+- **PEP8**
+    - No errors were returned from PEP8online.com
+
+
 ## Project Deployment Details
 
 This project was deployed using the Code Institute's mock terminal for Heroku. The deployment process involves several steps to ensure the application is hosted and accessible on the Heroku platform.
