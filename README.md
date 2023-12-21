@@ -110,21 +110,57 @@ Users can choose their preferred difficulty level before starting the game. This
   - Users input their guesses during the game.
   - Inputs are validated against the correct word for each level.
 
+This data model ensures the effective management and utilization of information required for a dynamic and engaging word-guessing game, providing a structured framework for the Vocab Venture Game's functionality.
 
+## Testing
 ### Unfixed Bugs
 
 You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
 
-## Deployment
+## Project Deployment Details
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
+This project was deployed using the Code Institute's mock terminal for Heroku. The deployment process involves several steps to ensure the application is hosted and accessible on the Heroku platform.
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows: 
-  - In the GitHub repository, navigate to the Settings tab 
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+## Deployment Steps:
 
-The live link can be found here - https://code-institute-org.github.io/love-maths/
+1. **Fork or Clone Repository**
+   - To start, either fork the repository on GitHub or clone it to your local machine using the following command:
+     ```bash
+     git clone https://github.com/JamesMackman/vocab-venture.git
+     ```
+
+2. **Create a New Heroku App**
+   - Log in to your Heroku account and create a new app from the Heroku Dashboard.
+   - Choose a unique and meaningful name for your app.
+
+3. **Set Buildpacks**
+   - Heroku needs to know how to build and run your application. Set the buildpacks for Python and NodeJS in that order using the Heroku CLI or the Heroku Dashboard.
+     ```bash
+     heroku buildpacks:set heroku/python
+     heroku buildpacks:add --index 1 heroku/nodejs
+     ```
+
+4. **Link Heroku App to Repository**
+   - Connect your Heroku app to the GitHub repository. This can be done through the Heroku Dashboard in the 'Deploy' tab.
+   - In the 'Deployment method' section, select GitHub and link your repository.
+
+5. **Deploy the App**
+   - Once linked, you can manually deploy your app from the Heroku Dashboard. Alternatively, you can enable automatic deploys for continuous integration.
+
+6. **Access the Deployed App**
+   - After successful deployment, Heroku provides a link to access your live application. Click on the provided [link](https://vocab-venture-49dd49ba6bdf.herokuapp.com/) to view and interact with the deployed project.
+
+
+### Additional Considerations
+
+- **Environment Variables:**
+  - Ensure any necessary environment variables are set in your Heroku app. This may include sensitive information or configuration details required for your application to function correctly.
+
+- **Debugging:**
+  - Monitor the logs in the Heroku Dashboard or using the Heroku CLI for any deployment errors. Debug and resolve issues as needed.
+
+Following these deployment steps should result in a successfully deployed project on the Heroku platform.
+
 
 
 ## Credits 
@@ -146,13 +182,3 @@ You can break the credits section up into Content and Media, depending on what y
 
 
 Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 
-
-## Other General Project Advice
-
-Below you will find a couple of extra tips that may be helpful when completing your project. Remember that each of these projects will become part of your final portfolio so it’s important to allow enough time to showcase your best work! 
-
-- One of the most basic elements of keeping a healthy commit history is with the commit message. When getting started with your project, read through [this article](https://chris.beams.io/posts/git-commit/) by Chris Beams on How to Write  a Git Commit Message 
-  - Make sure to keep the messages in the imperative mood 
-
-- When naming the files in your project directory, make sure to consider meaningful naming of files, point to specific names and sections of content.
-  - For example, instead of naming an image used ‘image1.png’ consider naming it ‘landing_page_img.png’. This will ensure that there are clear file paths kept.
