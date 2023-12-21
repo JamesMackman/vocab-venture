@@ -115,7 +115,25 @@ This data model ensures the effective management and utilization of information 
 ## Testing
 ### Unfixed Bugs
 
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+1. **Incorrect Level Display**
+   - **Issue:** Users consistently see the wrong level displayed during the game.
+   - **Cause:** The variable responsible for tracking the current level isn't updating correctly.
+   - **Solution:** I Reviewed and debugged the logic responsible for updating the current level, ensuring that it increments appropriately and is reflected in the user interface.
+
+2. **Repeated Word Selection**
+   - **Issue:** The game consistently selects the same word for each level, regardless of the chosen difficulty level.
+   - **Cause:** The random word selection logic isn't considering the associated difficulty level when choosing words.
+   - **Solution:** I modified the word selection process to filter words based on the current level's difficulty, ensuring a diverse and challenging experience for users.
+
+3. **Missing Hints**
+   - **Issue:** Hints are not displaying as expected during the game, affecting the user's ability to guess the word.
+   - **Cause:** An issue with the hint retrieval or display logic.
+   - **Solution:** I investigated the hint generation and display code to identify and address any issues. I ensured that hints are retrieved correctly and presented to the user.
+
+4. **Game Freezing**
+   - **Issue:** The game freezes or crashes unexpectedly during gameplay.
+   - **Cause:** Memory leaks, infinite loops, or other issues leading to program instability.
+   - **Solution:** I conducted a thorough code review, looking for potential memory leaks, infinite loops, or other performance issues. I implemented appropriate error handling to prevent crashes and improve overall stability.
 
 ## Project Deployment Details
 
@@ -165,20 +183,6 @@ Following these deployment steps should result in a successfully deployed projec
 
 ## Credits 
 
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
+- For deploying this project, I utilized the deployment terminal provided by Code Institute. 
+- Wordle for the initial game/project idea.
 
-You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
-### Content 
-
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
-
-
-Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 
