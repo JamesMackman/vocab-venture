@@ -4,7 +4,8 @@ import random
 
 # Constants
 WORKSHEET_NAME = 'words'
-SPREADSHEET_NAME = 'vocab_venture'  # Update to the name of your external spreadsheet
+SPREADSHEET_NAME = 'vocab_venture'
+
 
 def load_words(file_path='creds.json'):
     """
@@ -15,7 +16,6 @@ def load_words(file_path='creds.json'):
         "https://www.googleapis.com/auth/drive.file",
         "https://www.googleapis.com/auth/drive"
     ]
-
     try:
         # Load credentials
         CREDS = Credentials.from_service_account_file(file_path)
@@ -61,6 +61,7 @@ def load_words(file_path='creds.json'):
         print(f"An error occurred while loading words: {e}")
         return []
 
+
 def initialize_game():
     try:
         print("Welcome to the Vocab Venture Game!")
@@ -93,7 +94,11 @@ def initialize_game():
             correct_guess = False
 
             while attempts > 0:
-                guess = input("Enter your guess: ").lower()
+                guess = input("Enter your guess (or type 'quit' to end the game): ").lower()
+
+                if guess == 'quit':
+                    print("You've chosen to quit the game. Goodbye!")
+                    return None, None
 
                 if guess == chosen_word_info['word'].lower():
                     if current_level < 5:
@@ -129,18 +134,5 @@ def initialize_game():
 
 # Example usage
 initialize_game()
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
