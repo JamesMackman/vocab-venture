@@ -68,6 +68,20 @@ def initialize_game():
         print("Can you guess the words and complete all levels? "
               "Let's find out!")
 
+        # Instructions for playing the game
+        print("\nInstructions:")
+        print("1. You will start at Level 1, and "
+              "your goal is to reach Level 5.")
+        print("2. In each level, you will be given a word and three hints.")
+        print("3. You have 3 attempts to guess the correct "
+              "word for each level.")
+        print("4. Enter your guess when prompted. "
+              "Type 'quit' to end the game.")
+        print("5. If you guess the word correctly, "
+              "you move to the next level.")
+        print("6. Complete all levels to win the game!")
+        print("\nLet's get started!")
+
         # Set the initial level to 1
         current_level = 1
 
