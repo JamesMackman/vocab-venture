@@ -142,7 +142,7 @@ The project has undergone thorough testing and debugging, resulting in a stable 
 ### Validator Testing
 
 - **PEP8**
-    - No errors were returned from PEP8online.com
+    - The code has been validated against the PEP8 style guide using PEP8online.com, and no errors were reported. This ensures that the code adheres to the recommended Python coding conventions for style and readability.
 
 
 ## Project Deployment Details

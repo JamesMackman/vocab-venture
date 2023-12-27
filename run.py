@@ -65,7 +65,8 @@ def load_words(file_path='creds.json'):
 def initialize_game():
     try:
         print("Welcome to the Vocab Venture Game!")
-        print("Can you guess the words and complete all levels? Let's find out!")
+        print("Can you guess the words and complete all levels? "
+              "Let's find out!")
 
         # Set the initial level to 1
         current_level = 1
@@ -94,7 +95,9 @@ def initialize_game():
             correct_guess = False
 
             while attempts > 0:
-                guess = input("Enter your guess (or type 'quit' to end the game): ").lower()
+                guess = input(
+                    "Enter your guess (or type 'quit' to end the game): "
+                ).lower()
 
                 if guess == 'quit':
                     print("You've chosen to quit the game. Goodbye!")
@@ -102,22 +105,30 @@ def initialize_game():
 
                 if guess == chosen_word_info['word'].lower():
                     if current_level < 5:
-                        print(f"Congratulations! You guessed the word correctly and moved to Level {current_level + 1}.")
+                        print("Congratulations!\n"
+                              "You guessed the word correctly and moved to "
+                              f"Level {current_level + 1}.")
                     else:
-                        print("Congratulations! You've completed all levels. You win the game!")
+                        print("Congratulations! You've completed all levels. "
+                              "You win the game!")
                     correct_guess = True
                     break
                 else:
                     attempts -= 1
-                    print(f"Sorry, incorrect. You have {attempts} attempts left for Level {current_level}.")
+                    print(f"Incorrect. You have {attempts} attempts left"
+                          f"for Level {current_level}.")
 
                     if attempts > 0:
                         # Display the next hint
-                        next_hint = f"Hint {4 - attempts}: {chosen_hints[f'Hint {4 - attempts}']}"
-                        print(next_hint)
+                        hint_number = 4 - attempts
+                        hint_label = f"Hint {hint_number}:"
+                        next_hint = (
+                            f"{hint_label} "
+                            f"{chosen_hints[f'Hint {hint_number}']}")
 
             if not correct_guess:
-                print(f"You've run out of attempts for Level {current_level}. The correct word was '{chosen_word_info['word']}'.")
+                print(f"You've run out of attempts for Level {current_level}. "
+                      f"The correct word was '{chosen_word_info['word']}'.")
                 print("Resetting to Level 1.")
                 current_level = 1
             else:
@@ -132,7 +143,5 @@ def initialize_game():
         print(f"An error occurred during game initialization: {e}")
         return None, None
 
-# Example usage
+
 initialize_game()
-
-
