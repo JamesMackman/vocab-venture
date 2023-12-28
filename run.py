@@ -86,6 +86,25 @@ def display_instructions():
     print("\nLet's get started!")
 
 
+def get_user_guess():
+    """
+    Get and validate user input for the guess.
+
+    Returns:
+    - str: User's guess
+    """
+    while True:
+        user_input = input("Your guess (type 'quit' to end): ").lower()
+
+        if user_input == 'quit':
+            print("You've chosen to quit the game. Goodbye!")
+            return user_input
+        elif user_input.isalpha() and len(user_input) > 0:
+            return user_input
+        else:
+            print("Invalid input. Please enter a valid guess or 'quit.'")
+
+
 def play_game(word_list):
     """
     Initialize and run the Vocab Venture Game.
@@ -124,12 +143,9 @@ def play_game(word_list):
             correct_guess = False
 
             while attempts > 0:
-                guess = input(
-                    "Enter your guess (or type 'quit' to end the game): "
-                ).lower()
+                guess = get_user_guess()
 
                 if guess == 'quit':
-                    print("You've chosen to quit the game. Goodbye!")
                     return
 
                 if guess == chosen_word_info['word'].lower():
@@ -174,7 +190,6 @@ def play_game(word_list):
         return
 
 
-# Example usage
 word_list = load_words()
 if word_list:
     play_game(word_list)
