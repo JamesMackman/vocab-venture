@@ -10,6 +10,12 @@ SPREADSHEET_NAME = 'vocab_venture'
 def load_words(file_path='creds.json'):
     """
     Load words and hints from a Google Spreadsheet.
+
+    Parameters:
+    - file_path (str): Path to the credentials file.
+
+    Returns:
+    - list: List of dictionaries containing words and hints.
     """
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -66,6 +72,14 @@ def load_words(file_path='creds.json'):
 
 
 def initialize_game():
+    """
+    Initialize and run the Vocab Venture Game.
+
+    Returns:
+    - tuple: Tuple containing information about the initialized game.
+      The first element is the current level,
+      and the second element is the loaded word list.
+    """
     try:
         print("Welcome to the Vocab Venture Game!")
         print("Can you guess the words and complete all levels? "
