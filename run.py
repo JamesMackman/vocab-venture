@@ -9,7 +9,7 @@ SPREADSHEET_NAME = 'vocab_venture'
 
 def load_words(file_path='creds.json'):
     """
-    Load words and hints from a Google Spreadsheet
+    Load words and hints from a Google Spreadsheet.
     """
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -33,7 +33,7 @@ def load_words(file_path='creds.json'):
 
         # Check if the worksheet is empty
         if not data:
-            print("Error: Worksheet is empty. Exiting game.")
+            print("Error: The worksheet is empty. Exiting game.")
             return []
 
         # Extract words and hints
@@ -54,11 +54,14 @@ def load_words(file_path='creds.json'):
 
         return word_info_list
 
+    except FileNotFoundError as e:
+        print(f"Error: Credentials file not found - {e}")
+        return []
     except gspread.exceptions.SpreadsheetNotFound as e:
         print(f"Error: Spreadsheet not found - {e}")
         return []
     except Exception as e:
-        print(f"An error occurred while loading words: {e}")
+        print(f"An unexpected error occurred while loading words: {e}")
         return []
 
 
@@ -89,7 +92,7 @@ def initialize_game():
         word_list = load_words()
 
         if not word_list:
-            print("Error: No words loaded. Exiting game.")
+            print("Error: Failed to load words. Exiting game.")
             return None, None
 
         while current_level <= 5:
@@ -154,7 +157,7 @@ def initialize_game():
         print("\nGame interrupted by the user.")
         return None, None
     except Exception as e:
-        print(f"An error occurred during game initialization: {e}")
+        print(f"An unexpected error occurred during game initialization: {e}")
         return None, None
 
 
