@@ -17,21 +17,18 @@ def load_words(file_path='creds.json'):
     Returns:
     - list: List of dictionaries containing words and hints.
     """
-    SCOPE = [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive.file",
-        "https://www.googleapis.com/auth/drive"
-    ]
     try:
         # Load credentials
-        CREDS = Credentials.from_service_account_file(file_path)
-        SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-        GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+        credentials = Credentials.from_service_account_file(file_path)
+        scoped_credentials = credentials.with_scopes([
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive.file",
+            "https://www.googleapis.com/auth/drive"
+        ])
+        gspread_client = gspread.authorize(scoped_credentials)
 
-        # Open the spreadsheet
-        spreadsheet = GSPREAD_CLIENT.open(SPREADSHEET_NAME)
-
-        # Open the worksheet
+        # Open the spreadsheet and worksheet
+        spreadsheet = gspread_client.open(SPREADSHEET_NAME)
         words_worksheet = spreadsheet.worksheet(WORKSHEET_NAME)
 
         # Fetch all values from the worksheet
@@ -71,14 +68,33 @@ def load_words(file_path='creds.json'):
         return []
 
 
-def initialize_game():
+def display_instructions():
+    """
+    Display instructions for playing the game.
+    """
+    print("\nInstructions:")
+    print("1. You will start at Level 1, and "
+          "your goal is to reach Level 5.")
+    print("2. In each level, you will be given a word and three hints.")
+    print("3. You have 3 attempts to guess the correct "
+          "word for each level.")
+    print("4. Enter your guess when prompted. "
+          "Type 'quit' to end the game.")
+    print("5. If you guess the word correctly, "
+          "you move to the next level.")
+    print("6. Complete all levels to win the game!")
+    print("\nLet's get started!")
+
+
+def play_game(word_list):
     """
     Initialize and run the Vocab Venture Game.
 
+    Parameters:
+    - word_list (list): List of dictionaries containing words and hints.
+
     Returns:
-    - tuple: Tuple containing information about the initialized game.
-      The first element is the current level,
-      and the second element is the loaded word list.
+    - None
     """
     try:
         print("Welcome to the Vocab Venture Game!")
@@ -86,28 +102,10 @@ def initialize_game():
               "Let's find out!")
 
         # Instructions for playing the game
-        print("\nInstructions:")
-        print("1. You will start at Level 1, and "
-              "your goal is to reach Level 5.")
-        print("2. In each level, you will be given a word and three hints.")
-        print("3. You have 3 attempts to guess the correct "
-              "word for each level.")
-        print("4. Enter your guess when prompted. "
-              "Type 'quit' to end the game.")
-        print("5. If you guess the word correctly, "
-              "you move to the next level.")
-        print("6. Complete all levels to win the game!")
-        print("\nLet's get started!")
+        display_instructions()
 
         # Set the initial level to 1
         current_level = 1
-
-        # Load words from the external spreadsheet
-        word_list = load_words()
-
-        if not word_list:
-            print("Error: Failed to load words. Exiting game.")
-            return None, None
 
         while current_level <= 5:
             # Choose a random word for the current level
@@ -132,7 +130,7 @@ def initialize_game():
 
                 if guess == 'quit':
                     print("You've chosen to quit the game. Goodbye!")
-                    return None, None
+                    return
 
                 if guess == chosen_word_info['word'].lower():
                     if current_level < 5:
@@ -147,7 +145,7 @@ def initialize_game():
                 else:
                     attempts -= 1
                     print(f"Incorrect. You have {attempts} attempts left"
-                          f"for Level {current_level}.")
+                          f" for Level {current_level}.")
 
                     if attempts > 0:
                         # Display the next hint
@@ -156,6 +154,7 @@ def initialize_game():
                         next_hint = (
                             f"{hint_label} "
                             f"{chosen_hints[f'Hint {hint_number}']}")
+                        print(next_hint)
 
             if not correct_guess:
                 print(f"You've run out of attempts for Level {current_level}. "
@@ -169,10 +168,13 @@ def initialize_game():
 
     except KeyboardInterrupt:
         print("\nGame interrupted by the user.")
-        return None, None
+        return
     except Exception as e:
-        print(f"An unexpected error occurred during game initialization: {e}")
-        return None, None
+        print(f"An unexpected error occurred during game play: {e}")
+        return
 
 
-initialize_game()
+# Example usage
+word_list = load_words()
+if word_list:
+    play_game(word_list)
