@@ -54,6 +54,13 @@ The game is intended for a diverse audience, including language learners, studen
 
 ![Game Victory Message](images/victory_message.png)
 
+#### Game Completion Reset Message
+
+- After successfully completing Level 5 and winning the game, it will display a message providing options to the player.
+- Informs the player that they can type 'reset' to play the game again and continue the fun or type 'quit' to gracefully exit the game.
+
+![Game Completion Reset Message](images/completion_message.png)
+
 #### Attempts Limit
 
 - Limits the number of attempts for each level, adding a challenge to the game and encouraging strategic thinking and careful consideration of each guess.
