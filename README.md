@@ -6,6 +6,10 @@ The Vocab Venture Game is an engaging and educational project designed to enhanc
 **Target Audience:**
 The game is intended for a diverse audience, including language learners, students preparing for exams, and individuals seeking an entertaining way to boost their word comprehension. Whether you're a student looking to improve your vocabulary for academic success or a language enthusiast wanting to explore new words, the Vocab Venture Game offers a dynamic and accessible learning environment suitable for various skill levels.
 
+[Here is the live version of my project.](https://vocab-venture-49dd49ba6bdf.herokuapp.com/)
+
+![Responsive Mockup](images/mockup.png)
+
 ## Features 
 
 ### Existing Features
@@ -14,9 +18,13 @@ The game is intended for a diverse audience, including language learners, studen
 
 - Provides a friendly welcome message to the user, setting a positive tone for the game and creating an inviting atmosphere for a delightful gaming experience.
 
+![Welcome Message](images/welcome_message.png)
+
 #### Inital Level Setting
 
 - Sets the initial game level to 1, ensuring a logical start for the user and allowing a seamless progression through increasing levels of difficulty.
+
+![Level Setting](images/level_setting.png)
 
 #### Game Loop
 
@@ -30,6 +38,22 @@ The game is intended for a diverse audience, including language learners, studen
 
 - Displays hints progressively, making it easier for the user to guess the word, providing valuable assistance and guidance throughout the challenging levels.
 
+![Hints Display](images/hints_display.png)
+
+#### Game Instructions
+
+- Displays detailed instructions for playing the game, including the goal, rules, and steps to progress through levels.
+- Provides a clear overview of the game's objective, guiding the user on how to guess words, progress through levels, and ultimately win the game.
+
+![Game Instructions](images/instructions.png)
+
+#### Game Victory Message
+
+- Displays a congratulatory message when the player successfully completes Level 5, indicating that they have won the game.
+- Offers positive feedback, celebrating the player's achievement and acknowledging their success in completing all levels.
+
+![Game Victory Message](images/victory_message.png)
+
 #### Attempts Limit
 
 - Limits the number of attempts for each level, adding a challenge to the game and encouraging strategic thinking and careful consideration of each guess.
@@ -38,9 +62,13 @@ The game is intended for a diverse audience, including language learners, studen
 
 - Informs the user when they complete a level and congratulates them upon completing all levels, offering a sense of accomplishment and recognition for their progress.
 
+![Level Completion Message](images/level_completion.png)
+
 #### Resetting 
 
 - If the user fails to guess the word within the attempts limit, resets the game to Level 1, allowing users to restart and continue enjoying the game without unnecessary frustration.
+
+![Game Resetting](images/game_resetting.png)
 
 ### Future Features
 
