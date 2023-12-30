@@ -8,15 +8,6 @@ SPREADSHEET_NAME = 'vocab_venture'
 
 
 def load_words(file_path='creds.json'):
-    """
-    Load words and hints from a Google Spreadsheet.
-
-    Parameters:
-    - file_path (str): Path to the credentials file.
-
-    Returns:
-    - list: List of dictionaries containing words and hints.
-    """
     try:
         # Load credentials
         credentials = Credentials.from_service_account_file(file_path)
@@ -69,9 +60,6 @@ def load_words(file_path='creds.json'):
 
 
 def display_instructions():
-    """
-    Display instructions for playing the game.
-    """
     print("\nInstructions:")
     print("1. You will start at Level 1, and "
           "your goal is to reach Level 5.")
@@ -87,12 +75,6 @@ def display_instructions():
 
 
 def get_user_guess():
-    """
-    Get and validate user input for the guess.
-
-    Returns:
-    - str: User's guess
-    """
     while True:
         user_input = input("Your guess (type 'quit' to end): ").lower()
 
@@ -106,19 +88,9 @@ def get_user_guess():
 
 
 def play_game(word_list):
-    """
-    Initialize and run the Vocab Venture Game.
-
-    Parameters:
-    - word_list (list): List of dictionaries containing words and hints.
-
-    Returns:
-    - None
-    """
     try:
         print("Welcome to the Vocab Venture Game!")
-        print("Can you guess the words and complete all levels? "
-              "Let's find out!")
+        print("Can you guess the words and complete all levels? Let's find out!")
 
         # Instructions for playing the game
         display_instructions()
@@ -127,13 +99,8 @@ def play_game(word_list):
         current_level = 1
 
         while current_level <= 5:
-            # Choose a random word for the current level
             chosen_word_info = random.choice(word_list)
-
-            # Remove the chosen word from the word_list
             word_list.remove(chosen_word_info)
-
-            # Choose the hints for the chosen word
             chosen_hints = chosen_word_info['hints']
 
             print(f"\nLet's start Level {current_level}!")
@@ -164,7 +131,6 @@ def play_game(word_list):
                           f" for Level {current_level}.")
 
                     if attempts > 0:
-                        # Display the next hint
                         hint_number = 4 - attempts
                         hint_label = f"Hint {hint_number}:"
                         next_hint = (
@@ -181,6 +147,23 @@ def play_game(word_list):
                 current_level += 1
 
         print("You've reached Level 5! You win the game.")
+
+        # Display reset message with newlines for better formatting
+        print("\nGame completed!\n"
+              "You can type 'reset' to play again or 'quit' to exit the game.")
+
+        while True:
+            user_input = input("Your choice: ").lower()
+
+            if user_input == 'reset':
+                print("Resetting the game to Level 1. Let's play again!\n")
+                play_game(word_list)
+                break
+            elif user_input == 'quit':
+                print("Exiting the game. Goodbye!\n")
+                break
+            else:
+                print("Invalid input. Please enter 'reset' to play again or 'quit' to exit.\n")
 
     except KeyboardInterrupt:
         print("\nGame interrupted by the user.")
